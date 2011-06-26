@@ -38,7 +38,6 @@ namespace WTSEClient {
         void OnPaint();
         void OnBnClickedUserinfoClose();
         void OnBnClickedUserinfoPin();
-        void OnItemchangingList(NMHDR* pNMHDR, LRESULT* pResult);
         void OnTimer(UINT_PTR nIDEvent);
         HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 
@@ -87,8 +86,6 @@ namespace WTSEClient {
 
         /// @brief  logon session data to show
         LogonSession::InfoList m_logonSessionInfoList;
-
-        bool m_bInitializing;
 
         DECLARE_MESSAGE_MAP()
     };

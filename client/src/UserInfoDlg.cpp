@@ -47,7 +47,6 @@ using namespace WTSEClient;
 
 CUserInfoDlg::CUserInfoDlg(CWnd* pParent /*=NULL*/)
     : CDialog(CUserInfoDlg::IDD, pParent)
-    , m_bInitializing(false)
     , m_bMoving(false)
 {
 }
@@ -79,16 +78,12 @@ BOOL CUserInfoDlg::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
-    m_bInitializing = true;
-
     MinimizeLogonSessionList();
 
     InitStaticServerName();
     InitListCtrl();
     InitListItems();
     InitWindow();
-
-    m_bInitializing = false;
 
     OnStartTimer();
 
@@ -124,11 +119,6 @@ void CUserInfoDlg::OnBnClickedUserinfoPin()
     }
 
     UpdatePinButton(0 == m_nTimer);
-}
-
-void CUserInfoDlg::OnItemchangingList(NMHDR* pNMHDR, LRESULT* pResult)
-{
-    *pResult = m_bInitializing ? FALSE : TRUE;
 }
 
 void CUserInfoDlg::OnTimer(UINT_PTR nIDEvent)
@@ -222,7 +212,7 @@ void CUserInfoDlg::InitListCtrl()
         m_userinfoList.InsertColumn(i, &col);
     }
 
-    m_userinfoList.SetExtendedStyle(LVS_EX_GRIDLINES);
+    m_userinfoList.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 }
 
 void CUserInfoDlg::InitListItems()
@@ -379,7 +369,6 @@ BEGIN_MESSAGE_MAP(CUserInfoDlg, CDialog)
     ON_WM_PAINT()
     ON_WM_CTLCOLOR()
     ON_WM_TIMER()
-    ON_NOTIFY(LVN_ITEMCHANGING, IDC_LIST_USERINFO, &CUserInfoDlg::OnItemchangingList)
     ON_WM_LBUTTONDOWN()
     ON_WM_LBUTTONUP()
     ON_WM_MOUSEMOVE()
