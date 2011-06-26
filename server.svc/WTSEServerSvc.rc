@@ -1,0 +1,118 @@
+//Microsoft Visual C++ で生成されたリソース スクリプトです。
+//
+#include "hdr\resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE 2 リソースから生成されました。
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+LANGUAGE 17, 1
+#pragma code_page(932)
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE  
+BEGIN
+    "hdr\resource.h\0"
+END
+
+2 TEXTINCLUDE  
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE  
+BEGIN
+    "1 TYPELIB ""WTSEServerSvc.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\WTSEServer.ico"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// バージョン
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041103a4"
+        BEGIN
+            VALUE "CompanyName", "Akit Oguc."
+            VALUE "FileDescription", "Windows Terminal Session Enumeration Server (NT Service)"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "LegalCopyright", "(c) Akit Oguc.  All rights reserved."
+            VALUE "InternalName", "WTSEServerSvc.exe"
+            VALUE "OriginalFilename", "WTSEServerSvc.exe"
+            VALUE "ProductName", "Windows Terminal Session Enumerator"
+            VALUE "ProductVersion", "1.0.0.1"
+            VALUE "OLESelfRegister", ""
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0411, 932
+    END
+END
+
+#endif    // !_MAC
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// ストリング テーブル
+//
+
+STRINGTABLE  
+BEGIN
+    IDS_SERVICENAME "Logon Session Enumeration Service"
+END
+
+IDR_WTSESERVERSVC REGISTRY "res\WTSEServerSvc.rgs"
+////////////////////////////////////////////////////////////////////////////
+
+
+#endif
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE 3 リソースから生成されました。
+//
+1 TYPELIB "WTSEServerSvc.tlb"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED でない場合
+

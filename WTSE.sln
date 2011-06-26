@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WTSEClient", "client\WTSEClient.vcproj", "{BFD461C4-A252-4011-B31F-E9FAD19E10A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0C5D5F87-FEC8-464A-8672-A62EC1B07809} = {0C5D5F87-FEC8-464A-8672-A62EC1B07809}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WTSEServer", "server\WTSEServer.vcproj", "{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0C5D5F87-FEC8-464A-8672-A62EC1B07809} = {0C5D5F87-FEC8-464A-8672-A62EC1B07809}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WTSEServerExe", "server.exe\WTSEServerExe.vcproj", "{93351DF1-0F8F-4C2D-8CE4-B9922AF90977}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE} = {5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WTSEServerSvc", "server.svc\WTSEServerSvc.vcproj", "{AD174166-6030-4678-8CB0-82AC5BFE0C26}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE} = {5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WTSEUtility", "utility\WTSEUtility.vcproj", "{0C5D5F87-FEC8-464A-8672-A62EC1B07809}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93351DF1-0F8F-4C2D-8CE4-B9922AF90977}.Debug|Win32.ActiveCfg = Debug|Win32
+		{93351DF1-0F8F-4C2D-8CE4-B9922AF90977}.Debug|Win32.Build.0 = Debug|Win32
+		{93351DF1-0F8F-4C2D-8CE4-B9922AF90977}.Release|Win32.ActiveCfg = Release|Win32
+		{93351DF1-0F8F-4C2D-8CE4-B9922AF90977}.Release|Win32.Build.0 = Release|Win32
+		{0C5D5F87-FEC8-464A-8672-A62EC1B07809}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0C5D5F87-FEC8-464A-8672-A62EC1B07809}.Debug|Win32.Build.0 = Debug|Win32
+		{0C5D5F87-FEC8-464A-8672-A62EC1B07809}.Release|Win32.ActiveCfg = Release|Win32
+		{0C5D5F87-FEC8-464A-8672-A62EC1B07809}.Release|Win32.Build.0 = Release|Win32
+		{BFD461C4-A252-4011-B31F-E9FAD19E10A9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BFD461C4-A252-4011-B31F-E9FAD19E10A9}.Debug|Win32.Build.0 = Debug|Win32
+		{BFD461C4-A252-4011-B31F-E9FAD19E10A9}.Release|Win32.ActiveCfg = Release|Win32
+		{BFD461C4-A252-4011-B31F-E9FAD19E10A9}.Release|Win32.Build.0 = Release|Win32
+		{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}.Debug|Win32.Build.0 = Debug|Win32
+		{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}.Release|Win32.ActiveCfg = Release|Win32
+		{5CBB4BDC-0BAF-4A29-843D-2048DB11C9FE}.Release|Win32.Build.0 = Release|Win32
+		{AD174166-6030-4678-8CB0-82AC5BFE0C26}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AD174166-6030-4678-8CB0-82AC5BFE0C26}.Debug|Win32.Build.0 = Debug|Win32
+		{AD174166-6030-4678-8CB0-82AC5BFE0C26}.Release|Win32.ActiveCfg = Release|Win32
+		{AD174166-6030-4678-8CB0-82AC5BFE0C26}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

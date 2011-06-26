@@ -1,0 +1,18 @@
+// WTSEServerSvc.idl : WTSEServerSvc の IDL ソース
+//
+
+// このファイルは、タイプ ライブラリ (WTSEServerSvc.tlb) およびマーシャリング コードを
+// 作成するために MIDL ツールによって処理されます。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+    uuid(49529583-01F7-4C65-92A4-80DDCEE8246C),
+    version(1.0),
+    helpstring("WTSEServerSvc 1.0 type library")
+]
+library WTSEServerSvcLib
+{
+	importlib("stdole2.tlb");
+};
