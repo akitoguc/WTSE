@@ -11,6 +11,8 @@
 #include "UserInfoDlg.h"
 #include "CommonDef.h"
 
+#include "InputMessageDlg.h"
+
 namespace {
     /// @brief  index for specific column
     const int COL_IDX_ACTIVE = 0;
@@ -74,6 +76,21 @@ void CUserInfoDlg::DoDataExchange(CDataExchange* pDX)
 //    return FALSE;//CDialog::WindowProc(message, wParam, lParam);
 //}
 
+BOOL CUserInfoDlg::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
+{
+    if (pHandlerInfo == NULL) {
+        switch (nCode) {
+        case CN_COMMAND:
+            switch (nID) {
+            case IDM_SEND_MESSAGE:
+                SendMessage();
+                return TRUE;
+            }
+        }
+    }
+    return CDialog::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
+}
+
 BOOL CUserInfoDlg::OnInitDialog()
 {
     CDialog::OnInitDialog();
@@ -119,6 +136,27 @@ void CUserInfoDlg::OnBnClickedUserinfoPin()
     }
 
     UpdatePinButton(0 == m_nTimer);
+}
+
+void CUserInfoDlg::OnRClickList(NMHDR* pNMHDR, LRESULT* pResult)
+{
+    LPNMLISTVIEW lpnmlv = (LPNMLISTVIEW)pNMHDR;
+
+    if (lpnmlv->iItem < 0) {
+        *pResult = 0;
+        return;
+    }
+
+    CMenu menu;
+    VERIFY(menu.LoadMenu(IDR_MENU_POPUP_USERINFO));
+    CMenu* pPopup = menu.GetSubMenu(0);
+    ASSERT(pPopup);
+
+    CPoint point;
+    GetCursorPos(&point);
+    pPopup->TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON, point.x, point.y, this);
+
+    *pResult = 0;
 }
 
 void CUserInfoDlg::OnTimer(UINT_PTR nIDEvent)
@@ -329,6 +367,38 @@ void CUserInfoDlg::OnStopTimer()
     m_nTimer = 0;
 }
 
+void CUserInfoDlg::SendMessage()
+{
+    int pos = m_userinfoList.GetNextItem(-1, LVNI_ALL | LVNI_SELECTED);
+    if (pos < 0) {
+        return;
+    }
+
+    CString userName = m_userinfoList.GetItemText(pos, COL_IDX_USER);
+
+    CInputMessageDlg dlg;
+    INT_PTR nResponse = dlg.DoModal();
+    if (nResponse == IDCANCEL) {
+        return;
+    }
+    else if (nResponse != IDOK) {
+        ASSERT(false);
+    }
+
+    CString cmd;
+    cmd.Format(L"msg %s /server:%s %s", userName, m_csServer, dlg.m_csMessage);
+
+    STARTUPINFO si;
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+
+    PROCESS_INFORMATION pi;
+    ZeroMemory(&pi, sizeof(pi));
+
+    int nRet = CreateProcess(NULL, const_cast<LPWSTR>((LPCWSTR)cmd), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi);
+    ASSERT(nRet);
+}
+
 void CUserInfoDlg::MinimizeLogonSessionList()
 {
     LogonSession::InfoList::iterator itEnd;
@@ -369,6 +439,7 @@ BEGIN_MESSAGE_MAP(CUserInfoDlg, CDialog)
     ON_WM_PAINT()
     ON_WM_CTLCOLOR()
     ON_WM_TIMER()
+    ON_NOTIFY(NM_RCLICK, IDC_LIST_USERINFO, &CUserInfoDlg::OnRClickList) 
     ON_WM_LBUTTONDOWN()
     ON_WM_LBUTTONUP()
     ON_WM_MOUSEMOVE()

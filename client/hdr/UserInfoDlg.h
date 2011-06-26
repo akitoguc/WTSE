@@ -34,10 +34,12 @@ namespace WTSEClient {
 
         // message handlers
     protected:
+        virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
         virtual BOOL OnInitDialog();
         void OnPaint();
         void OnBnClickedUserinfoClose();
         void OnBnClickedUserinfoPin();
+        void OnRClickList(NMHDR* pNMHDR, LRESULT* pResult);
         void OnTimer(UINT_PTR nIDEvent);
         HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 
@@ -55,6 +57,8 @@ namespace WTSEClient {
 
         void OnStartTimer();
         void OnStopTimer();
+
+        void SendMessage();
 
         void MinimizeLogonSessionList();
         CString FormatLogonTime(const LARGE_INTEGER& time) const;
